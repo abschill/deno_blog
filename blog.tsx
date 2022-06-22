@@ -332,7 +332,13 @@ export async function handler(
             : []
         )),
       ],
-      scripts: IS_DEV ? [{ src: "/hmr.js" }] : undefined,
+      scripts: IS_DEV ? [{ src: "/hmr.js" }, { src: 'https://www.googletagmanager.com/gtag/js?id=G-SW3B5Q8GL1'}, `
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-SW3B5Q8GL1');
+	  `] : undefined,
       body: <PostPage post={post} state={blogState} />,
     });
   }
